@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCupcakes - Deliciosos Cupcakes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #2d0036 0%, #ff0055 100%);
+            color: #fff0f6;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(90deg, #ff0055 0%, #8f005a 100%);
+            color: #fff0f6;
+            text-align: center;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #8f005a 0%, #ff0055 100%);
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff0f6;
+            padding: 1rem;
+        }
+
+        .menu {
+            padding: 2rem 1rem;
+            background: rgba(45,0,54,0.7);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+
+        .menu-item {
+            background: linear-gradient(135deg, #ff0055 0%, #2d0036 100%);
+            border-radius: 16px;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .menu-item:hover {
+            transform: scale(1.04) rotate(-1deg);
+            box-shadow: 0 8px 32px rgba(255,0,85,0.3);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item h3, .menu-item p {
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        .menu-item h3:hover, .menu-item p:hover {
+            color: #ffb6e6;
+            text-shadow: 0 0 8px #ff0055, 0 0 16px #8f005a;
+            cursor: pointer;
+        }
+
+        .wa-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff0055 0%, #8f005a 100%);
+            color: #fff0f6;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(255,0,85,0.2);
+        }
+        .wa-btn:hover {
+            background: linear-gradient(90deg, #8f005a 0%, #ff0055 100%);
+            box-shadow: 0 4px 16px #ff0055;
+        }
+
+        footer {
+            background: #2d0036;
+            color: #ffb6e6;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                height: auto;
+                padding: 2rem 1rem;
+            }
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+        .my-gradient {
+            background: linear-gradient(270deg, #ff0055, #8f005a, #2d0036, #ff0055);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            animation: gradientMove 3s linear infinite;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .header-text .picante {
+            font-size: 1.2rem;
+            color: #ffb6e6;
+            margin-top: 0.3rem;
+            font-style: italic;
+            text-shadow: 0 0 8px #ff0055, 0 0 16px #8f005a;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="header-text">
+                <h1><span class="my-gradient">MY</span>Cupcakes</h1>
+                <p class="picante">¡Dulzura que te hará pecar de placer!</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h2>Disfruta los momentos con un Cupcake</h2>
+            <p>Hechos con amor y los mejores ingredientes</p>
+        </div>
+    </section>
+
+    <section class="menu">
+        <h2>Nuestros Cupcakes</h2>
+        <div class="menu-grid" id="productos-container">
+            <!-- Los productos se cargarán aquí dinámicamente -->
+        </div>
+    </section>
+
+    <script>
+        // Función para cargar los productos desde el archivo JSON
+        async function cargarProductos() {
+            try {
+                const response = await fetch('productos.json');
+                const data = await response.json();
+                const container = document.getElementById('productos-container');
+                
+                data.productos.forEach(producto => {
+                    const productoHTML = `
+                        <div class="menu-item">
+                            <img src="${producto.imagen}" alt="${producto.nombre}">
+                            <h3>${producto.nombre}</h3>
+                            <p>${producto.descripcion}</p>
+                            <p>$${producto.precio.toFixed(2)}</p>
+                            <a class="wa-btn" href="https://wa.me/593984768783?text=Hola%2C%20quiero%20solicitar%20el%20${encodeURIComponent(producto.nombre)}" target="_blank">Solicitar</a>
+                        </div>
+                    `;
+                    container.innerHTML += productoHTML;
+                });
+            } catch (error) {
+                console.error('Error al cargar los productos:', error);
+            }
+        }
+
+        // Cargar los productos cuando la página se cargue
+        document.addEventListener('DOMContentLoaded', cargarProductos);
+    </script>
+
+    <footer>
+        <p>MyCupcakes © 2024 - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>

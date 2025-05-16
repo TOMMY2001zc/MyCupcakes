@@ -1,0 +1,25 @@
+{
+    "productos": [
+        {
+            "id": 1,
+            "nombre": "Fidelidad de Chocolate",
+            "descripcion": "Sólo tienes ojos (y boca) para este cupcake, ¡no te dejes tentar por otros postres!",
+            "precio": 3.50,
+            "imagen": "https://images.unsplash.com/photo-1488477181946-6428a848b919?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+        },
+        {
+            "id": 2,
+            "nombre": "Imaginación de Fresa",
+            "descripcion": "No necesitas fotos, ¡lo que importa es cómo te lo comes!",
+            "precio": 3.50,
+            "imagen": "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+        },
+        {
+            "id": 3,
+            "nombre": "Oh My Cupcake!",
+            "descripcion": "Cuando lo pruebes, lo único que podrás decir es: ¡Dios mío, qué rico!",
+            "precio": 3.50,
+            "imagen": "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+        }
+    ]
+} 
