@@ -5,21 +5,21 @@
             "nombre": "Fidelidad de Chocolate",
             "descripcion": "Sólo tienes ojos (y boca) para este cupcake, ¡no te dejes tentar por otros postres!",
             "precio": 3.50,
-            "imagen": "https://raw.githubusercontent.com/TOMMY2001zc/MyCupcakes/refs/heads/MyCupcakes/res/chocolate.jpg"
+            "imagen": "./res/chocolate.jpg"
         },
         {
             "id": 2,
             "nombre": "Imaginación de Fresa",
             "descripcion": "No necesitas fotos, ¡lo que importa es cómo te lo comes!",
             "precio": 3.50,
-            "imagen": "https://raw.githubusercontent.com/TOMMY2001zc/MyCupcakes/refs/heads/MyCupcakes/res/fresa.jpg"
+            "imagen": "./res/fresa.jpg"
         },
         {
             "id": 3,
             "nombre": "Oh My Cupcake!",
             "descripcion": "Cuando lo pruebes, lo único que podrás decir es: ¡Dios mío, qué rico!",
             "precio": 3.50,
-            "imagen": "https://raw.githubusercontent.com/TOMMY2001zc/MyCupcakes/refs/heads/MyCupcakes/res/oh_my_cupcake.jpg"
+            "imagen": "./res/oh_my_cupcake.jpg"
         }
     ]
 } 
